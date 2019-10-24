@@ -1,0 +1,9 @@
+service: lambda-function1
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  hello:
+    handler: handler.hello
