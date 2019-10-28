@@ -9,20 +9,22 @@ exports.handler = async (event, context) => {
     let responseBody = "";
     let statusCode = 0
 
-    const { user_id, first_name, age, last_name } = JSON.parse(event.body)
+    
+    const { user_id, first_name, age, last_name } = event
+    console.log(event)
 
     const params = {
         TableName: "Users",
         Item: {
             user_id: user_id,
             first_name: first_name,
-            age: age,
+            age: 999,
             last_name: last_name
         }
     };
 
     try {
-         const data = await documentClient.put(params).promise()
+         const data = await documentClient.put(params).promise();
          responseBody = JSON.stringify(data);
          statusCode = 201;
     } catch(err) {
